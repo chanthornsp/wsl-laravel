@@ -60,11 +60,22 @@ Go to https://learn.microsoft.com/en-us/windows/wsl/install and follow the instr
 - Go to your web root directory (e.g. `cd ~/var/www`)
 - Run `valet park` to register your current working directory as a path that Valet should search for sites
 - To test if Valet is working create a new directory in your web root directory (e.g. `mkdir -p ~/var/www/info`)
+
   - Run `cd ~/var/www/info`
   - Run `echo "<?php phpinfo();" > index.php`
   - On Windows you must add host `info.test` to `C:\Windows\System32\drivers\etc\hosts` file
   - You can use [Hosts File Editor](https://hostsfileeditor.com/) to edit hosts file
   - Open your browser and go to http://info.test
+
+- Auto Valet start
+- Run `nano ~/.bashrc`
+  - Go to the end of the file and add the following line:
+    <pre>
+    if ! ps -C nginx >/dev/null; then
+        sudo service mysql start # start mysql if not running
+        valet start # start valet
+    fi
+    </pre>
 
 ## Install Laravel Installer
 
