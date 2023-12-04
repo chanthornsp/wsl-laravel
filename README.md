@@ -15,7 +15,7 @@ Go to https://learn.microsoft.com/en-us/windows/wsl/install and follow the instr
 
 - Run `sudo visudo`
 - Go to the end of the file and add the following line:
-  <br /> `(root) NOPASSWD: ALL`
+  <br /> `ALL ALL = (root) NOPASSWD: /usr/sbin/service`
   <br />
   `<your_username> ALL=(ALL) NOPASSWD: ALL`
 - Save and exit by pressing `Ctrl + X`, then `Y`, then `Enter` (Nano Editor)
