@@ -63,7 +63,7 @@ Go to https://learn.microsoft.com/en-us/windows/wsl/install and follow the instr
 
   - Run `cd ~/var/www/info`
   - Run `echo "<?php phpinfo();" > index.php`
-  - On Windows you must add host `info.test` to `C:\Windows\System32\drivers\etc\hosts` file
+  - On Windows you must add host `127.0.0.1     info.test` to `C:\Windows\System32\drivers\etc\hosts` file
   - You can use [Hosts File Editor](https://hostsfileeditor.com/) to edit hosts file
   - Open your browser and go to http://info.test
 
