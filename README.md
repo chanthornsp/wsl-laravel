@@ -1,4 +1,4 @@
-# Setup WSL For Laravel Development Development
+# Setup WSL For Laravel Development
 
 ## Install WSL
 
