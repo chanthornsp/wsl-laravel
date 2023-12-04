@@ -22,7 +22,7 @@ Go to https://learn.microsoft.com/en-us/windows/wsl/install and follow the instr
 
 ## Install PHP and PHP Extensions
 
-- Run `sudo apt install php php-cli php-fpm php-json php-pdo php-mysql php-zip php-gd php-mbstring php-curl php-xml php-pear php-bcmath php-tokenizer php-xmlwriter php-redis php-imagick php-intl php-sqlite3 php-mongodb php-amqp php-xdebug -y`
+- Run `sudo apt install php-cli php-common php-curl php-json php-mbstring php-zip  php-opcache php-readline php-xml php-zip php-sqlite3 php-mysql php-pgsql redis-server php-redis imagemagick php-gd php-imagick php-pear -y`
 - Verify PHP is installed by running `php -v` You should see PHP Version.
 
 ## Install MySQL
