@@ -57,11 +57,11 @@ Go to https://learn.microsoft.com/en-us/windows/wsl/install and follow the instr
 - Install Valet via Composer
   - Run `composer global require cpriego/valet-linux`
 - Run `valet install`
-- Go to your web root directory (e.g. `cd ~/var/www`)
+- Go to your web root directory (e.g. `cd /var/www`)
 - Run `valet park` to register your current working directory as a path that Valet should search for sites
-- To test if Valet is working create a new directory in your web root directory (e.g. `mkdir -p ~/var/www/info`)
+- To test if Valet is working create a new directory in your web root directory (e.g. `mkdir -p /var/www/info`)
 
-  - Run `cd ~/var/www/info`
+  - Run `cd /var/www/info`
   - Run `echo "<?php phpinfo();" > index.php`
   - On Windows you must add host `127.0.0.1     info.test` to `C:\Windows\System32\drivers\etc\hosts` file
   - You can use [Hosts File Editor](https://hostsfileeditor.com/) to edit hosts file
@@ -81,3 +81,17 @@ Go to https://learn.microsoft.com/en-us/windows/wsl/install and follow the instr
 
 - Run `composer global require laravel/installer`
 - Run `laravel --version` to verify Laravel Installer is installed
+
+## Editor Setup (VSCode)
+
+- Install VSCode
+- Install VSCode [Remote WSL Extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl)
+- Open WSL Terminal
+- Go to your project folder
+- Run `code .` to open VSCode
+
+## Others (Optional)
+
+- [Laravel Roadmap](https://github.com/Hasnayeen/laravel-developer-roadmap)
+
+# [Next Step Create Laravel Project](createLaravelProject.md)
