@@ -2,61 +2,146 @@
 
 ## Install WSL
 
-Go to https://learn.microsoft.com/en-us/windows/wsl/install and follow the instructions
+Go to https://learn.microsoft.com/en-us/windows/wsl/install-manual and follow the instructions
 
 ## Install Ubuntu 22.04 LTS
 
 - Download Ubuntu 22.04 LTS from the Microsoft Store by going to https://apps.microsoft.com/detail/9PN20MSR04DW?hl=en-us&gl=US
 - Launch Ubuntu 22.04 LTS
 - Create a username and password
-- Run `sudo apt update && sudo apt upgrade -y`
+- Run
+  ```bash
+  sudo apt-get update && sudo apt-get upgrade -y
+  ```
 
 ## Remove Password Requirement for Sudo (Optional)
 
 - Run `sudo visudo`
 - Go to the end of the file and add the following line:
-  <br /> `ALL ALL = (root) NOPASSWD: /usr/sbin/service`
-  <br />
-  `<your_username> ALL=(ALL) NOPASSWD: ALL`
+  ```bash
+  ALL ALL = (root) NOPASSWD: /usr/sbin/service
+  <your_username> ALL=(ALL) NOPASSWD: ALL
+  ```
 - Save and exit by pressing `Ctrl + X`, then `Y`, then `Enter` (Nano Editor)
 
-## Install PHP and PHP Extensions
+## Install PHP MySQL Nginx Redis and required packages...
 
-- Run `sudo apt install php-cli php-common php-curl php-json php-mbstring php-zip  php-opcache php-readline php-xml php-zip php-sqlite3 php-mysql php-pgsql redis-server php-redis imagemagick php-gd php-imagick php-pear -y`
+- Run
+  ```bash
+  sudo apt-get install network-manager libnss3-tools jq xsel build-essential libssl-dev zip unzip dnsmasq nginx mysql-server php-fpm php-cli php-mysql php-sqlite3 php-intl php-zip php-xml php-curl php-mbstring redis-server php-redis php-pear php-dev pkg-config libz-dev libzip-dev libmemcached-dev libmemcached11 libmemcachedutil2 libmagickwand-dev imagemagick memcached -y
+  ```
 - Verify PHP is installed by running `php -v` You should see PHP Version.
 
-## Install MySQL
+## Setup MySQL
 
-- Run `sudo apt install mysql-server -y`
 - Run `sudo service mysql start`
 - To change the root password run `sudo mysql`
-  - Run `ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';` (Replace `password` with your password).
-  - Run `FLUSH PRIVILEGES;`
-  - Run `exit`
-- Restart MySQL by running `sudo service mysql restart`
+  - Run
+    ```sql
+    ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';
+    ```
+  - Replace `password` with your password.
+  - Run
+    ```sql
+    FLUSH PRIVILEGES;
+    ```
+  - Run
+    ```sql
+    exit;
+    ```
+- Restart MySQL by running
+  ```bash
+  sudo service mysql restart
+  ```
 
 ## Node Setup
 
-- Go to https://github.com/nodesource/distributions#debian-and-ubuntu-based-distributions and follow the instructions to install NodeJS the LTS version.
+- Download and import the Nodesource GPG key
+
+  ```bash
+  sudo apt-get update
+  sudo apt-get install -y ca-certificates curl gnupg
+  sudo mkdir -p /etc/apt/keyrings
+  curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg
+  ```
+
+- Create deb repository
+
+  ```bash
+  NODE_MAJOR=20
+  echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_$NODE_MAJOR.x nodistro main" | sudo tee /etc/apt/sources.list.d/nodesource.list
+  ```
+
+  _**Note:** check node LTS version and replace NODE_MAJOR with the version you want to install._
+
+- Update and install NodeJS
+
+  ```bash
+  sudo apt-get update
+  sudo apt-get install -y nodejs
+  ```
+
+- [Reference](https://github.com/nodesource/distributions#debian-and-ubuntu-based-distributions)
 
 ## Install Composer
 
 - `cd ~` to go to your home directory
-- Run `wget https://getcomposer.org/installer`
-- Run `php installer`
-- Run `sudo mv composer.phar /usr/local/bin/composer` Add composer to your path
+- Run
+  ```bash
+  wget https://getcomposer.org/installer
+  ```
+- Run
+  ```bash
+  php installer
+  ```
+- Run
+
+  ```bash
+  sudo mv composer.phar /usr/local/bin/composer
+  ```
+
+  _Add composer to your path_
+
 - Run `composer --version` to verify composer is installed
-- Add the following to your `~/.bashrc` file:
-  <br /> `export PATH=~/.config/composer/vendor/bin:$PATH`
-- Run `source ~/.bashrc` to reload your bashrc file
+- Add this to the end of your `~/.bashrc` file
+  by running
+
+  ```bash
+  nano ~/.bashrc
+  ```
+
+  and adding the following line:
+
+  ```bash
+  export PATH="$HOME/.config/composer/vendor/bin:$PATH"
+  ```
+
+  save and exit by pressing `Ctrl + X`, then `Y`, then `Enter` (Nano Editor)
+
+- Run
+
+  ```bash
+  source ~/.bashrc
+  ```
+
+  to reload your bashrc file
 
 ## Set Laravel Valet for linux
 
 - Install Required Packages
-  - Run `sudo apt-get install network-manager libnss3-tools jq xsel -y`
+  - Run
+    ```bash
+    sudo apt-get install network-manager libnss3-tools jq xsel -y
+    ```
 - Install Valet via Composer
-  - Run `composer global require cpriego/valet-linux`
-- Run `valet install`
+  - Run
+    ```bash
+    composer global require cpriego/valet-linux
+    ```
+- Run
+  ```bash
+  valet install
+  ```
 - Go to your web root directory (e.g. `cd /var/www`)
 - Run `valet park` to register your current working directory as a path that Valet should search for sites
 - To test if Valet is working create a new directory in your web root directory (e.g. `mkdir -p /var/www/info`)
