@@ -34,7 +34,10 @@ Go to https://learn.microsoft.com/en-us/windows/wsl/install-manual and follow th
 
 ## Setup MySQL
 
-- Run `sudo service mysql start`
+- Run
+  ```bash
+  sudo service mysql start
+  ```
 - To change the root password run `sudo mysql`
   - Run
     ```sql
@@ -81,6 +84,8 @@ Go to https://learn.microsoft.com/en-us/windows/wsl/install-manual and follow th
   sudo apt-get install -y nodejs
   ```
 
+- Run `node -v` to verify NodeJS is installed
+
 - [Reference](https://github.com/nodesource/distributions#debian-and-ubuntu-based-distributions)
 
 ## Install Composer
@@ -110,7 +115,7 @@ Go to https://learn.microsoft.com/en-us/windows/wsl/install-manual and follow th
   nano ~/.bashrc
   ```
 
-  and adding the following line:
+  and adding this to the end of the file:
 
   ```bash
   export PATH="$HOME/.config/composer/vendor/bin:$PATH"
@@ -142,25 +147,59 @@ Go to https://learn.microsoft.com/en-us/windows/wsl/install-manual and follow th
   ```bash
   valet install
   ```
-- Go to your web root directory (e.g. `cd /var/www`)
-- Run `valet park` to register your current working directory as a path that Valet should search for sites
-- To test if Valet is working create a new directory in your web root directory (e.g. `mkdir -p /var/www/info`)
+- Go to your web root directory e.g.
+  ```bash
+  cd /var/www
+  ```
+- Run
+  ```bash
+  valet park
+  ```
+  to register your current working directory as a path that Valet should search for sites
+- To test if Valet is working create a new directory in your web root directory
+  ```bash
+  mkdir info
+  ```
+- If permission denied run
+  _(**Not Recommended**)_
 
-  - Run `cd /var/www/info`
-  - Run `echo "<?php phpinfo();" > index.php`
-  - On Windows you must add host `127.0.0.1     info.test` to `C:\Windows\System32\drivers\etc\hosts` file
-  - You can use [Hosts File Editor](https://hostsfileeditor.com/) to edit hosts file
-  - Open your browser and go to http://info.test
+  ```bash
+  sudo chmod -R 777 /var/www
+  ```
+
+  OR
+  _(**Recommended**)_
+
+  ```bash
+  sudo chown -R $USER:$USER /var/www
+  ```
+
+  and create directory again
+
+- Run
+  ```bash
+  cd /var/www/info
+  ```
+- Run
+  ```bash
+  echo "<?php phpinfo();" > index.php
+  ```
+- On Windows you must add host `127.0.0.1     info.test` to `C:\Windows\System32\drivers\etc\hosts` file
+- You can use [Hosts File Editor](https://hostsfileeditor.com/) to edit hosts file
+- Open your browser and go to http://info.test
 
 - Auto Valet start
-- Run `nano ~/.bashrc`
+- Run
+  ```bash
+  nano ~/.bashrc
+  ```
   - Go to the end of the file and add the following line:
-    <pre>
+    ```bash
     if ! ps -C nginx >/dev/null; then
         sudo service mysql start # start mysql if not running
         valet start # start valet
     fi
-    </pre>
+    ```
 
 ## Install Laravel Installer
 
