@@ -35,7 +35,12 @@
   ```bash
   openssl rand -base64 32
   ```
-- Copy the output of the above command and paste it in the `blowfish_secret` field in the `config.inc.php`
+- First, run the command mentioned earlier and note down its output.
+- Then, use the `sodium_hex2bin('32_byte_string')` function with the output you got.
+- For example, in the `config.inc.php` file, you might write:
+  ```php
+  $cfg['blowfish_secret'] = sodium_hex2bin('f16ce59f45714194371b48fe362072dc3b019da7861558cd4ad29e4d6fb13851');
+  ```
 
 ## Add PHPMyAdmin to Valet
 
