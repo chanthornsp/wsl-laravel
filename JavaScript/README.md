@@ -2,20 +2,22 @@
 
 ## Variables
 
-- `var` keyword
+- `var` keyword (old way)
 
   - when you declare a variable with `var` keyword, it is scoped to the function in which it is declared
     Example:
 
   ```javascript
   function foo() {
-    var a = 1;
+    if (true) {
+      var a = 1;
+      console.log(a); // 1
+    }
     console.log(a); // 1
   }
-  console.log(a); // ReferenceError: a is not defined
   ```
 
-  - `var` keyword is function scoped
+  -`var` keyword is function scoped
 
 - `let` keyword
 
@@ -24,10 +26,12 @@
 
   ```javascript
   function foo() {
-    let a = 1;
-    console.log(a); // 1
+    if (true) {
+      let a = 2;
+      console.log(a); // 2
+    }
+    console.log(a); // ReferenceError: a is not defined
   }
-  console.log(a); // ReferenceError: a is not defined
   ```
 
   - `let` keyword is block scoped
