@@ -47,7 +47,6 @@
     - computer_id: int
     - type_id: int
     - user_id : int
-    <!-- - stock: int ??? -->
 
 ## Table Specifications
 
