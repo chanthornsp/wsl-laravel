@@ -1,5 +1,12 @@
 # Table for Computer Lab (Database design)
 
+## Table Users
+
+    - id: int
+    - name: string
+    - email: string
+    - password: string
+
 ## Table Computer Laboritorys
 
     - id: int
@@ -7,6 +14,7 @@
     - description: string
     - capacity: int
     - status: string
+    - user_id: int
 
 ## Table Status
 
@@ -38,7 +46,8 @@
     - status_id : int
     - computer_id: int
     - type_id: int
-    - stock: int ???
+    - user_id : int
+    <!-- - stock: int ??? -->
 
 ## Table Specifications
 
