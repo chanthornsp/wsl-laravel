@@ -59,23 +59,12 @@ Go to https://learn.microsoft.com/en-us/windows/wsl/install-manual and follow th
 
 ## Node Setup
 
-- Download and import the Nodesource GPG key
+- Node.js LTS version:
+- Using Ubuntu
 
-  ```bash
-  sudo apt-get update
-  sudo apt-get install -y ca-certificates curl gnupg
-  sudo mkdir -p /etc/apt/keyrings
-  curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg
   ```
-
-- Create deb repository
-
-  ```bash
-  NODE_MAJOR=20
-  echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_$NODE_MAJOR.x nodistro main" | sudo tee /etc/apt/sources.list.d/nodesource.list
+  curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash - &&\
   ```
-
-  _**Note:** check node LTS version and replace NODE_MAJOR with the version you want to install._
 
 - Update and install NodeJS
 
