@@ -64,12 +64,6 @@ Go to https://learn.microsoft.com/en-us/windows/wsl/install-manual and follow th
 
   ```
   curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash - &&\
-  ```
-
-- Update and install NodeJS
-
-  ```bash
-  sudo apt-get update
   sudo apt-get install -y nodejs
   ```
 
